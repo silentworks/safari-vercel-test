@@ -18,7 +18,7 @@ export async function GET(
   }
 
   if (provider) {
-    const supabase = createRouteHandlerClient({ cookies });
+    const supabase = createRouteHandlerClient({ cookies: () => cookies() });
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
       options,

@@ -1,7 +1,9 @@
-import { createServerClient } from "@/lib/supabase-server";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 
 export default async function Home() {
-  const supabase = createServerClient();
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient({ cookies: () => cookieStore });
 
   const {
     data: { session },
