@@ -254,7 +254,7 @@ var DEFAULT_COOKIE_OPTIONS = {
 };
 
 // src/chunker.ts
-var MAX_CHUNK_SIZE = 1e3;
+var MAX_CHUNK_SIZE = 3600;
 function createChunks(key, value) {
   const chunkCount = Math.ceil(value.length / MAX_CHUNK_SIZE);
   if (chunkCount === 1) {
