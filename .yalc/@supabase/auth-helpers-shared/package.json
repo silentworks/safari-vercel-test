@@ -1,0 +1,40 @@
+{
+	"name": "@supabase/auth-helpers-shared",
+	"version": "0.5.0",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"lint": "tsc",
+		"build": "tsup"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/supabase/auth-helpers.git"
+	},
+	"keywords": [
+		"Supabase",
+		"Auth",
+		"Svelte Kit",
+		"Svelte"
+	],
+	"author": "Supabase",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/supabase/auth-helpers/issues"
+	},
+	"homepage": "https://github.com/supabase/auth-helpers#readme",
+	"dependencies": {
+		"jose": "^4.14.4"
+	},
+	"peerDependencies": {
+		"@supabase/supabase-js": "^2.19.0"
+	},
+	"yalcSig": "66e1f7f797b1021aafbbeefd21b34b03"
+}

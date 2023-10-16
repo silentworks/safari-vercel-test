@@ -1,0 +1,38 @@
+{
+	"name": "@supabase/auth-helpers-nextjs",
+	"version": "0.8.1",
+	"description": "A collection of framework specific Auth utilities for working with Supabase.",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"lint": "tsc",
+		"build": "tsup",
+		"clean:all": "rimraf dist node_modules"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/supabase/auth-helpers.git"
+	},
+	"keywords": [
+		"Supabase",
+		"Auth",
+		"Nextjs"
+	],
+	"author": "Supabase",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/supabase/auth-helpers/issues"
+	},
+	"homepage": "https://github.com/supabase/auth-helpers/tree/main/packages/nextjs#readme",
+	"dependencies": {
+		"@supabase/auth-helpers-shared": "0.5.0",
+		"set-cookie-parser": "^2.6.0"
+	},
+	"peerDependencies": {
+		"@supabase/supabase-js": "^2.19.0"
+	},
+	"yalcSig": "d72c94629cae93191d3389bb1dd7a18e"
+}
