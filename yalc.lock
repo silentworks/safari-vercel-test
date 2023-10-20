@@ -2,12 +2,12 @@
   "version": "v1",
   "packages": {
     "@supabase/auth-helpers-nextjs": {
-      "signature": "351a029caa666859d8c3442953b3d5ca",
+      "signature": "6b85ae85d0c6ce0ecca1258ce4bb09fa",
       "file": true,
       "replaced": "^0.7.4"
     },
     "@supabase/auth-helpers-shared": {
-      "signature": "a861468e39125c774492328a214d4e1e",
+      "signature": "894640361c27ac7a064a376172a55cbe",
       "file": true
     }
   }

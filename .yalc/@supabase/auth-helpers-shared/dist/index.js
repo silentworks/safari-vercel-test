@@ -250,6 +250,7 @@ function isBrowser() {
 // src/utils/constants.ts
 var DEFAULT_COOKIE_OPTIONS = {
   path: "/",
+  sameSite: "lax",
   maxAge: 60 * 60 * 24 * 365 * 1e3
 };
 
@@ -268,6 +269,20 @@ function createChunks(key, value) {
   });
   return chunks;
 }
+function combineChunk(key, retrieveChunk = () => {
+  return null;
+}) {
+  let values = [];
+  for (let i = 0; ; i++) {
+    const chunkName = `${key}.${i}`;
+    const chunk = retrieveChunk(chunkName);
+    if (!chunk) {
+      break;
+    }
+    values.push(chunk);
+  }
+  return values.length ? values.join("") : null;
+}
 
 // src/cookieAuthStorageAdapter.ts
 var CookieAuthStorageAdapter = class {
@@ -280,22 +295,16 @@ var CookieAuthStorageAdapter = class {
   }
   getItem(key) {
     const value = this.getCookie(key);
-    if (typeof value !== "undefined") {
+    if (key.endsWith("-code-verifier") && value) {
       return value;
     }
-    const values = [];
-    for (let i = 0; ; i++) {
-      const cookieName = `${key}.${i}`;
-      const value2 = this.getCookie(cookieName);
-      if (!value2) {
-        break;
-      }
-      values.push(value2);
+    if (value) {
+      return JSON.stringify(parseSupabaseCookie(value));
     }
-    if (key.endsWith("-code-verifier")) {
-      return value ?? null;
-    }
-    return values.length ? JSON.stringify(parseSupabaseCookie(values.join(""))) : null;
+    const chunks = combineChunk(key, (chunkName) => {
+      return this.getCookie(chunkName);
+    });
+    return chunks !== null ? JSON.stringify(parseSupabaseCookie(chunks)) : null;
   }
   setItem(key, value) {
     if (key.endsWith("-code-verifier")) {
@@ -307,11 +316,11 @@ var CookieAuthStorageAdapter = class {
     const sessionChunks = createChunks(key, sessionStr);
     if (!Array.isArray(sessionChunks)) {
       this.setCookie(key, sessionChunks);
-      return;
+    } else {
+      sessionChunks.forEach((sess) => {
+        this.setCookie(sess.name, sess.value);
+      });
     }
-    sessionChunks.forEach((sess) => {
-      this.setCookie(sess.name, sess.value);
-    });
   }
   removeItem(key) {
     this._deleteSingleCookie(key);
