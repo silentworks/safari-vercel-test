@@ -342,8 +342,6 @@ var CookieAuthStorageAdapter = class {
     }
   }
 };
-// No clue why, but 3600 matches 4kb in the browser
-CookieAuthStorageAdapter.MAX_COOKIE_SIZE = 3600;
 
 // src/browserCookieStorage.ts
 var BrowserCookieAuthStorageAdapter = class extends CookieAuthStorageAdapter {

@@ -14,7 +14,6 @@ type SupabaseClientOptionsWithoutAuth<SchemaName = 'public'> = Omit<SupabaseClie
 interface StorageAdapter extends Exclude<GoTrueClientOptions['storage'], undefined> {
 }
 declare abstract class CookieAuthStorageAdapter implements StorageAdapter {
-    static MAX_COOKIE_SIZE: number;
     protected readonly cookieOptions: DefaultCookieOptions;
     constructor(cookieOptions?: CookieOptions);
     protected abstract getCookie(name: string): string | undefined | null;

@@ -71,8 +71,8 @@ devDependencies:
     specifier: ^0.1.13
     version: 0.1.13
   supabase:
-    specifier: ^1.100.1
-    version: 1.100.1
+    specifier: ^1.106.1
+    version: 1.106.1
   tcp-port-used:
     specifier: ^1.0.2
     version: 1.0.2
@@ -2844,8 +2844,8 @@ packages:
       ts-interface-checker: 0.1.13
     dev: false
 
-  /supabase@1.100.1:
-    resolution: {integrity: sha512-Tn03fjNGiCoJ06ZeBtCmaNj3Kqf2UzM8bpptiIrP7g5wPmAHL8MTDM2ZEemkRxAWAm2E+fcb8zGOSNbh0RCQGQ==}
+  /supabase@1.106.1:
+    resolution: {integrity: sha512-Wc1GYraDRCRGZIkCPoN00QuSP//Cm2Q4q5B6LvEHb2dKoezO7Mx7SYZ5rhh3X0ko9Yii0ABeN2GE88ZVL9R5mg==}
     engines: {npm: '>=8'}
     hasBin: true
     requiresBuild: true

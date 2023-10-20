@@ -14,7 +14,11 @@ export async function GET(
   };
 
   if (provider == "azure") {
-    options.scopes = "email";
+    options.scopes = "email,offline_access,profile";
+  }
+
+  if (provider == "github") {
+    options.scopes = "public_repo,gist,user,notifications"
   }
 
   if (provider) {
